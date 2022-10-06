@@ -7,6 +7,9 @@ import { NavparComponent } from './navpar/navpar.component';
 import { MainComponent } from './main/main.component';
 import { ProductComponent } from './product/product.component';
 import { FooterComponent } from './footer/footer.component';
+import { FormAddComponent } from './form-add/form-add.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { LoginformComponent } from './loginform/loginform.component';
 
 @NgModule({
   declarations: [
@@ -14,11 +17,14 @@ import { FooterComponent } from './footer/footer.component';
     NavparComponent,
     MainComponent,
     ProductComponent,
-    FooterComponent
+    FooterComponent,
+    FormAddComponent,
+    LoginformComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
