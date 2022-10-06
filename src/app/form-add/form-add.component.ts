@@ -1,41 +1,38 @@
-import { NgIf } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators ,Validator} from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 @Component({
   selector: 'app-form-add',
   templateUrl: './form-add.component.html',
   styleUrls: ['./form-add.component.css']
 })
-export class FormAddComponent implements OnInit {
+export class FormAddComponent{
   adduser: FormGroup;
-  check = false;
+  check = true;
   constructor() {
     this.adduser = new FormGroup(
       {
         name:new FormControl("",[Validators.required,Validators.minLength(5)]),
         email: new FormControl("",[Validators.required,Validators.email]),
         password: new FormControl("",[Validators.required,Validators.minLength(7)]),
-        password2: new FormControl("",[Validators.required,Validators.minLength(7)])
+        password2: new FormControl("",[Validators.required,Validators.minLength(7)]),
+        accept: new FormControl("",[Validators.required])
       },
     )
     
   };
-  validathionpass(passwordkey:string , confirmpassword:string)
+  validathionpass(passwordkey:string , confirmpassword:string):boolean
   {
-     if(passwordkey != confirmpassword )  
+     if(passwordkey !== confirmpassword )  
      {
-        this.check = true;
-        return true
+      // console.log(passwordkey.valueOf())
+        return this.check = false;
      }
      else
      {
-      this.check = false;
-      return false
+      return this.check = true;
      }
   } 
 
 
-  ngOnInit(): void {
-  }
 
 }
