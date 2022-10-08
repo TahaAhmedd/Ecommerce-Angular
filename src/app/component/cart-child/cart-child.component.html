@@ -1,0 +1,20 @@
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Name</th>
+        <th scope="col">Image</th>
+        <th scope="col">Price</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody class="align-baseline">
+      <tr *ngFor="let prd of catProductList">
+        <th>{{prd.id}}</th>
+        <td>{{prd.name}}</td>
+        <td><img [src]="prd.img" style="width: 150px; height:150px"></td>
+        <td>{{prd.price}}</td>
+        <td><input class="btn btn-danger" type="button" value="Remove" (click)="removePrd()"></td>
+      </tr>
+    </tbody>
+  </table>

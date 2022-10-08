@@ -56,12 +56,13 @@
                               <label class="form-label" for="form3Example4cd">Repeat your password</label>
                             <input type="password" id="form3Example4cd" class="form-control" formControlName="password2" 
                             (keyup)="validathionpass(adduser.value['password'],adduser.value['password2'])"/>
-                            
-                            <span class="text-danger "*ngIf='!check'>
-                              "Your Password not matched" </span>
-                              <!-- <div class="mt-3 pt-2" *ngIf="adduser.get('password2')?.touched && adduser.get('password2')?.invalid">
+                            <div class="mt-3 pt-2">
+                              <span class="alert alert-danger "*ngIf='!check'>
+                                "Your Password not matched" </span>
+                            </div>
+                              <div class="mt-3 pt-2" *ngIf="adduser.get('password2')?.touched && adduser.get('password2')?.invalid">
                                 <span class="alert alert-danger w-100" *ngIf="adduser.get('password2')?.errors?.['required']">Please Enter Your password</span>
-                              </div> -->
+                              </div>
                           </div>
                         </div>
       

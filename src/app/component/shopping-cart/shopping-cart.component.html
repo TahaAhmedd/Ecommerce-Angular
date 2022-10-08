@@ -1,0 +1,9 @@
+<div class="container">
+    <h2>Shoping</h2>
+    <div>
+        <select name="selectCat" id="" [(ngModel)]="selectCat">
+            <option [value]="i.id" *ngFor="let i of catigoryList">{{i.name}}</option>
+        </select>
+    </div>
+    <app-cart-child [catlist]="selectCat"></app-cart-child>
+</div>
