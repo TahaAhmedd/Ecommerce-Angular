@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { CartArgumentsModule } from 'src/app/modal/cart-arguments/cart-arguments.module';
 import { Catigory } from 'src/app/modal/catigory';
+import { product } from 'src/app/modal/product';
 import { ScatigoryService } from 'src/app/services/scatigory.service';
 
 @Component({
@@ -9,6 +11,7 @@ import { ScatigoryService } from 'src/app/services/scatigory.service';
 })
 export class ShoppingCartComponent implements OnInit {
   catigoryList:Catigory[]=[];
+  productlist:CartArgumentsModule[]=[]
   selectCat:number=0;
   constructor(private catigoryServisec:ScatigoryService) {
     // this.catigoryList = [
@@ -24,5 +27,17 @@ export class ShoppingCartComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  recivedCartItem(value:CartArgumentsModule){
+    // this.productopj =value
+    // console.log(this.productList)
 
+    this.productlist.push(value)
+  }
+
+  removeItem(index:number){
+    console.log(index)
+    if(index !== -1){
+      this.productlist.splice(index, 1)
+    }
+  }
 }

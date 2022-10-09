@@ -1,4 +1,5 @@
-import { Component, Input, OnChanges, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
+import { CartArgumentsModule } from 'src/app/modal/cart-arguments/cart-arguments.module';
 import { Catigory } from 'src/app/modal/catigory';
 import { product } from 'src/app/modal/product';
 import { SproductService } from 'src/app/services/sproduct.service';
@@ -12,9 +13,12 @@ export class CartChildComponent implements OnChanges {
 
 
   // productlist:product[]=[];
-
   @Input() catlist:number=0;
 
+  @Output() recevidBuy:EventEmitter<CartArgumentsModule>
+  // quantity:number;
+  // recivedqty:number =0; // for test -Quantity
+  totalPrice:number = 0; 
   catProductList:product[]=[]
   constructor(private catServices:SproductService ) {
   //   this.productlist = 
@@ -26,6 +30,9 @@ export class CartChildComponent implements OnChanges {
   //     {"id":4 , "name":"Iphone se","quantity":2 , "price":1000 , "img":"https://images.squarespace-cdn.com/content/v1/59d2bea58a02c78793a95114/1587413587555-BPQ9MKZIOZJJJ77IZB45/image-asset.jpeg",catId:3},
   //   ]
 
+    // this.quantity =  this.catServices.getQuantity(this.recivedqty) // for test -Quantity
+
+    this.recevidBuy= new EventEmitter<CartArgumentsModule>()
     
   }
   ngOnInit(): void {
@@ -41,9 +48,26 @@ export class CartChildComponent implements OnChanges {
 
     this.catProductList = this.catServices.getCatId( this.catlist)
     
+    
   }
 
-  removePrd(){
-    // delete this.catProductList[]
+  buy(price:number,count:number,qty:any){
+
+    if(count == 0)
+      this.totalPrice += price
+    else
+      this.totalPrice += +price * +count  ; 
+    
+  }
+
+  addToCart(id:number, name:string,price:number,image:string,count:number){
+    this.recevidBuy.emit(
+      {id:id,
+      name:name,
+      price:price,
+      img:image,
+      count:count }
+    )
+        
   }
 }

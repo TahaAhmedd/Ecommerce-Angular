@@ -6,6 +6,8 @@ import { product } from '../modal/product';
 })
 export class SproductService {
   productlist:product[];
+
+  x:product[]=[]
   constructor() { 
     this.productlist = 
     [
@@ -29,5 +31,13 @@ export class SproductService {
     else{
       return this.productlist.filter(prd => prd.catId == catList)
     }
+  }
+
+  getQuantity(qty:Number)
+  {
+    // for(let i of this.productlist)
+    //   return qty = i.quantity
+    let y = this.x.filter(prd => prd.quantity)
+    return +y - +qty
   }
 }

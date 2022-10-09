@@ -1,9 +1,43 @@
 <div class="container">
-    <h2>Shoping</h2>
-    <div>
-        <select name="selectCat" id="" [(ngModel)]="selectCat">
-            <option [value]="i.id" *ngFor="let i of catigoryList">{{i.name}}</option>
-        </select>
+    <div class="d-flex justify-content-between align-items-baseline">
+
+        <div>
+            <h2>Shoping</h2>
+        </div>
+        <div>
+            <select class="form-select" name="selectCat" id="" [(ngModel)]="selectCat">
+                <option [value]="i.id" *ngFor="let i of catigoryList">{{i.name}}</option>
+            </select>
+        </div>
     </div>
-    <app-cart-child [catlist]="selectCat"></app-cart-child>
+    <hr>
+    <app-cart-child [catlist]="selectCat" (recevidBuy)="recivedCartItem($event)"></app-cart-child>
+
+    <div class="container mt-5 mb-5">
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Name</th>
+                <th scope="col">Image</th>
+                <th scope="col">Price</th>
+                <th scope="col">Count</th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody class="align-baseline">
+              <tr *ngFor="let prd of productlist;let i = index">
+                <th>{{prd.id}}</th>
+                <td>{{prd.name}}</td>
+                <td><img [src]="prd.img" style="width: 150px; height:150px"></td>
+                <td>{{prd.price}}</td>
+                <td>
+                    <span *ngIf="prd.count == 0 ">1</span>
+                    <span *ngIf="prd.count != 0">{{prd.count}}</span>
+                </td>
+                <td><button class="btn btn-danger" (click)="removeItem(i)">remove</button></td>
+              </tr>
+            </tbody>
+          </table>
+    </div>
 </div>

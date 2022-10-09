@@ -4,7 +4,9 @@
         <th scope="col">Id</th>
         <th scope="col">Name</th>
         <th scope="col">Image</th>
+        <th scope="col">quantity</th>
         <th scope="col">Price</th>
+        <th scope="col">Count</th>
         <th scope="col"></th>
       </tr>
     </thead>
@@ -13,8 +15,18 @@
         <th>{{prd.id}}</th>
         <td>{{prd.name}}</td>
         <td><img [src]="prd.img" style="width: 150px; height:150px"></td>
-        <td>{{prd.price}}</td>
-        <td><input class="btn btn-danger" type="button" value="Remove" (click)="removePrd()"></td>
+        <td>{{prd.quantity}}</td>
+        <td>{{prd.price | currency:"USD"}}</td>
+        <td><input type="number" name="" #count id=""></td>
+        <td><input class="btn btn-success" type="button" value="buy" 
+          (click)="buy(prd.price,+count.value,prd.quantity)"
+          (click)="addToCart(prd.id,prd.name,prd.price,prd.img,+count.value)"
+          ></td>
       </tr>
     </tbody>
   </table>
+
+  <h2 class="text-end"> 
+    Total Price:{{totalPrice}}
+  </h2>
+  <hr>
