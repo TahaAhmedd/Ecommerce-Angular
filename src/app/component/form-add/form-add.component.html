@@ -1,6 +1,6 @@
 
 
-<div class="container">
+<div class="container my-5 ">
     <section >
         <div class="container h-100">
           <div class="row d-flex justify-content-center align-items-center h-100">
@@ -12,16 +12,16 @@
       
                       <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sign up</p>
       
-                      <form class="mx-1 mx-md-4" [formGroup]="adduser" >
-      
+                      <form class="mx-1 mx-md-4" [formGroup]="adduser" (ngSubmit)="add()">
+                        <!-- <span class="alert alert-danger"></span> -->
                         <div class="d-flex flex-row align-items-center mb-4">
                           <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                           <div class="form-outline flex-fill mb-0">
                               <label class="form-label" for="form3Example1c">Your Name</label>
-                            <input type="text" id="form3Example1c" class="form-control" formControlName="name" />
-                            <div class="mt-3 pt-2" *ngIf="adduser.get('name')?.touched && adduser.get('name')?.invalid">
-                                <span class="alert alert-danger " *ngIf="adduser.get('name')?.errors?.['required']">Please Enter Your Name</span>
-                                <span class="text-danger" *ngIf="adduser.get('name')?.errors?.['minlength']">must enter a name with al least 4 character</span>
+                            <input type="text" id="form3Example1c" class="form-control" formControlName="Name" />
+                            <div class="mt-3 pt-2" *ngIf="adduser.get('Name')?.touched && adduser.get('Name')?.invalid">
+                                <span class="alert alert-danger " *ngIf="adduser.get('Name')?.errors?.['required']">Please Enter Your Name</span>
+                                <span class="text-danger" *ngIf="adduser.get('Name')?.errors?.['minlength']">must enter a Name with al least 4 character</span>
                             </div>
                           </div>
                         </div>
@@ -29,11 +29,10 @@
                         <div class="d-flex flex-row align-items-center mb-4">
                           <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
                           <div class="form-outline flex-fill mb-0">
-                              <label class="form-label" for="form3Example3c">Your Email</label>
-                            <input type="email" id="form3Example3c" class="form-control" formControlName="email"/>
-                            <div class="mt-3 pt-2" *ngIf="adduser.get('email')?.touched && adduser.get('email')?.invalid">
-                                <span class="alert alert-danger " *ngIf="adduser.get('email')?.errors?.['required']">Please Enter Your email</span>
-                                <span class="alert alert-danger " *ngIf="adduser.get('email')?.errors?.['email']">Your Email not valid</span>
+                              <label class="form-label" for="form3Example3c">User Name</label>
+                            <input type="text" id="form3Example3c" class="form-control" formControlName="UserName"/>
+                            <div class="mt-3 pt-2" *ngIf="adduser.get('UserName')?.touched && adduser.get('UserName')?.invalid">
+                                <span class="alert alert-danger " *ngIf="adduser.get('UserName')?.errors?.['required']">Please Enter Your UserName</span>
                             </div>
                           </div>
                         </div>
@@ -42,31 +41,30 @@
                           <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
                           <div class="form-outline flex-fill mb-0">
                             <label class="form-label" for="form3Example4c">Password</label>
-                            <input type="password" id="form3Example4c" class="form-control" formControlName="password" />
-                            <div class="mt-3 pt-2 w-100" *ngIf="adduser.get('password')?.touched && adduser.get('password')?.invalid">
-                                <span class="alert alert-danger " *ngIf="adduser.get('password')?.errors?.['required']">Please Enter Your password</span>
-                                <span class="alert alert-danger" *ngIf="adduser.get('password')?.errors?.['minlength']">Your Password less Than 7 character</span>
+                            <input type="password" id="form3Example4c" class="form-control" formControlName="Password" />
+                            <div class="mt-3 pt-2 w-100" *ngIf="adduser.get('Password')?.touched && adduser.get('Password')?.invalid">
+                                <span class="alert alert-danger " *ngIf="adduser.get('Password')?.errors?.['required']">Please Enter Your Password</span>
                             </div>
                           </div>
                         </div>
       
-                        <div class="d-flex flex-row align-items-center mb-4">
+                        <!-- <div class="d-flex flex-row align-items-center mb-4">
                           <i class="fas fa-key fa-lg me-3 fa-fw"></i>
                           <div class="form-outline flex-fill mb-0">
                               <label class="form-label" for="form3Example4cd">Repeat your password</label>
-                            <input type="password" id="form3Example4cd" class="form-control" formControlName="password2" 
-                            (keyup)="validathionpass(adduser.value['password'],adduser.value['password2'])"/>
+                            <input type="password" id="form3Example4cd" class="form-control" #password2 
+                            (keyup)="validathionpass(adduser.value['Password'],password2.value)"/>
                             <div class="mt-3 pt-2">
                               <span class="alert alert-danger "*ngIf='!check'>
                                 "Your Password not matched" </span>
                             </div>
-                              <div class="mt-3 pt-2" *ngIf="adduser.get('password2')?.touched && adduser.get('password2')?.invalid">
+                              <div class="mt-3 pt-2" *ngIf="adduser.get('password2')?.markAsUntouched">
                                 <span class="alert alert-danger w-100" *ngIf="adduser.get('password2')?.errors?.['required']">Please Enter Your password</span>
                               </div>
                           </div>
-                        </div>
+                        </div> -->
       
-                        <div class="form-check d-flex justify-content-center mb-5">
+                        <!-- <div class="form-check d-flex justify-content-center mb-5">
                           <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3c" formControlName="accept"/>
                           <label class="form-check-label" for="form2Example3">
                             I agree all statements in <a href="#!">Terms of service</a>
@@ -74,10 +72,10 @@
                           <div class="mt-3 pt-2 w-100" *ngIf="adduser.get('accept')?.touched && adduser.get('accept')?.invalid">
                             <span class="alert alert-danger " *ngIf="adduser.get('accept')?.errors?.['required']">Please checed the term</span>
                         </div>
-                        </div>
+                        </div> -->
       
                         <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                          <button type="button" class="btn btn-primary btn-lg" [disabled]="adduser.invalid || adduser.get('accept')?.invalid">Register</button>
+                          <button type="submit" class="btn btn-primary btn-lg" routerLink="/login" [disabled]="adduser.invalid">Register</button>
                         </div>
       
                       </form>

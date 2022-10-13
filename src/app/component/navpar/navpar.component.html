@@ -1,90 +1,71 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-dark">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">Navbar</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Dropdown
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-          </li>
-        </ul>
-        <div class="d-flex gap-4 me-5">
-          <div>
-            <!-- -----------login modal----------- -->
-          <!-- Button trigger modal -->
-          <div class="text-light d-flex align-items-baseline log_reg" data-bs-toggle="modal" data-bs-target="#exampleModal">
-            <i  class="me-2 text-white-50 fa-solid fa-user"></i>
-            <p class="d-inline-flex m-0 p-0 text-black">Log In</p>
-          </div>
-          
-          <!-- Modal -->
-          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">Log In</h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                 <app-loginform></app-loginform>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-primary">Save changes</button>
-                </div>
-              </div>
-            </div>
-          </div>
-          </div>
-            <!-- ----------End Modal login--------- -->
+<nav class="navbar navbar-expand-lg navbar-light bg-dark text-light">
+  <div class="container text-light">
+    <a class="navbar-brand text-light" href="#">Teto</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active text-light" aria-current="page" routerLink="/main">Home</a>
+        </li>
+        <!-- <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-light" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            Dropdown
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </li> -->
+        <li class="nav-item">
+          <a class="nav-link text-light" routerLink="/main" tabindex="-1" aria-disabled="true">Product</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-light" routerLink="/shoping" tabindex="-1">Shoping</a>
+        </li>
+      </ul>
+      <div class="d-flex gap-4 me-5">
 
-            <!-- -------start Modal register---------- -->
-            <div>
-              <div class="text-light log_reg" data-bs-toggle="modal" data-bs-target="#Modalregister">
-                <i class="me-2 text-white-50 fa-solid fa-user-plus"></i>
-                <p class="d-inline-flex m-0 p-0 text-black">Register</p>
-              </div>
-              
-              <!-- Modal -->
-              <div class="modal modal-xl fade " id="Modalregister" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog w-100">
-                  <div class="modal-content w-100">
-                    <div class="modal-header">
-                      <h5 class="modal-title" id="exampleModalLabel">Log In</h5>
-                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                     <app-form-add></app-form-add>
-                    </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                      <button type="button" class="btn btn-primary">Save changes</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- ---------End modal Register------- -->
+
+        <div  class="text-light d-flex align-items-baseline log_reg">
+          <a routerLink="/cart" class="text-light text-decoration-none text-light">
+            <i class="fs-5 fas fa-cart-plus"></i>
+            <span style="font-size: 10px;" class="badge bg-danger">{{counter}}</span>
+          </a>
         </div>
+        <div *ngIf="!islog" class="text-light d-flex align-items-baseline log_reg">
+          <a [routerLink]="['/login','']" class="text-light text-decoration-none text-light">
+            <i class=" me-2 text-success fa-solid fa-user"></i>
+            <p class="d-inline-flex m-0 p-0 text-light">Log In</p>
+          </a>
+        </div>
+
+        <div *ngIf="islog" class="text-light d-flex align-items-baseline log_reg">
+          <a routerLink="/logout" class="text-light text-decoration-none">
+            <i class="me-2 text-danger fa-solid fa-user"></i>
+            <p class="d-inline-flex m-0 p-0 text-light">Log Out</p>
+          </a>
+        </div>
+
+
+        <!-- -------start Modal register---------- -->
+        <div *ngIf="!islog" class="text-light log_reg">
+
+          <a routerLink="/register" class="text-light text-decoration-none">
+            <i class="me-2 text-success fa-solid fa-user-plus"></i>
+            <p class="d-inline-flex m-0 p-0 text-light">Register</p>
+          </a>
+        </div>
+
+
       </div>
     </div>
-  </nav>
+  </div>
+</nav>

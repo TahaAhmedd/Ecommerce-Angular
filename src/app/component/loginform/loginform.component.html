@@ -1,14 +1,14 @@
-<div class="container">
-    <form>
+<div class="container my-5 d-flex justify-content-center align-items-center">
+    <form [formGroup]="addform" (ngSubmit)="add()" class="w-50 ">
         <!-- Email input -->
         <div class="form-outline mb-4">
-          <input type="email" id="form2Example1" class="form-control" />
-          <label class="form-label" for="form2Example1">Email address</label>
+          <input type="email" id="form2Example1" class="form-control" formControlName="UserName" />
+          <label class="form-label" for="form2Example1">User Name</label>
         </div>
       
         <!-- Password input -->
         <div class="form-outline mb-4">
-          <input type="password" id="form2Example2" class="form-control" />
+          <input type="password" id="form2Example2" class="form-control" formControlName="Password" />
           <label class="form-label" for="form2Example2">Password</label>
         </div>
       
@@ -29,7 +29,7 @@
         </div>
       
         <!-- Submit button -->
-        <button type="submit" class="btn btn-primary btn-block mb-4">Sign in</button>
+        <button type="submit" [disabled]="addform.invalid" class="btn btn-primary btn-block mb-4">Sign in</button>
       
         <!-- Register buttons -->
         <div class="text-center">

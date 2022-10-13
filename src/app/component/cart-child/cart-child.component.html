@@ -18,7 +18,7 @@
         <td>{{prd.quantity}}</td>
         <td>{{prd.price | currency:"USD"}}</td>
         <td><input type="number" name="" #count id=""></td>
-        <td><input class="btn btn-success" type="button" value="buy" 
+        <td><input class="btn btn-success" type="button" value="Add To Cart" 
           (click)="buy(prd.price,+count.value,prd.quantity)"
           (click)="addToCart(prd.id,prd.name,prd.price,prd.img,+count.value)"
           ></td>

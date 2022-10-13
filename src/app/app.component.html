@@ -1,9 +1,5 @@
-
+<app-lodear *ngIf="islooding |async" style="overflow: hidden;"></app-lodear>
 <app-navpar></app-navpar>
 
-<app-main></app-main>
-<div class="row">
-
-    <app-shopping-cart class="col-12"></app-shopping-cart>
-</div>
+<router-outlet></router-outlet>
 <app-footer></app-footer>

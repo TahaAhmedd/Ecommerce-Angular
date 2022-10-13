@@ -1,11 +1,12 @@
 <div class="row">
-    <div class="col-3 d-flex justify-content-center flex-column align-items-center" *ngFor="let i of lest">
+    <div class="gap-3 col-3 d-flex justify-content-center flex-column align-items-center" *ngFor="let i of productList">
         <div class="card w-100 p-2  mb-3">
-            <img class="w-100 h-50" src="{{i.img}}">
-            <h3 class="text-danger mt-4" >{{i.name}}</h3>
-            <p>quantity:{{i.quantity}}</p>
+            <img style="width: 150px;height: 150px;" class="center" src="{{i.image}}">
+            <h5 class="mt-4 " style="white-space: nowrap; overflow:hidden; text-overflow: ellipsis; max-width: 100ch;" >{{i.title}}</h5>
+            <p style="white-space: nowrap; overflow:hidden; text-overflow: ellipsis; max-width: 100ch;">{{i.description}}</p>
+            <p>quantity:{{i.rating.count}}</p>
             <p class="text-danger">${{i.price}}</p>
         </div>
-        <button type="button" class="btn btn-primary">Primary</button>
+        <button type="button" class="mb-4 btn btn-primary" (click)="addToCart(i)">Add To Cart</button>
     </div>
 </div>

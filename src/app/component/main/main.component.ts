@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PrmothinAdsService } from 'src/app/services/prmothin-ads.service';
 
 @Component({
   selector: 'app-main',
@@ -6,10 +7,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./main.component.css']
 })
 export class MainComponent implements OnInit {
-
-  constructor() { }
+  recevedads:string=""
+  constructor(private adsServes:PrmothinAdsService) { }
 
   ngOnInit(): void {
+    this.adsServes.getAds(2).subscribe({
+      next:(data)=>{
+        // console.log(data)
+        this.recevedads = data
+      },
+      error:err=> console.log(err),
+
+      complete:()=>console.log("asdas")
+    })
   }
 
 }
